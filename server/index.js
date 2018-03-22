@@ -4,7 +4,7 @@ const cors = require("cors");
 const { json } = require("body-parser");
 
 // Import controllers
-const { getEventsInfo } = require("./controllers/meetupCtrl");
+const { getEventsInfo, getRSVPs } = require("./controllers/meetupCtrl");
 
 const app = express();
 
@@ -17,7 +17,7 @@ app.use(cors());
 
 // API Endpoints
 app.get("/api/eventsInfo/:groupName", getEventsInfo);
-//app.get("/api/rsvps", getRsvps);
+app.get("/api/rsvps/:groupName/:eventID", getRSVPs);
 
 const port = process.env.PORT || 3001;
 
