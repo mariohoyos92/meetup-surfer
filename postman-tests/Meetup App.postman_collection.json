@@ -1,0 +1,185 @@
+{
+	"info": {
+		"_postman_id": "971a1c84-3bee-4da5-bf8a-e8190910456e",
+		"name": "Meetup App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Event Info Valid Group Name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "75496c4b-58a2-4cfd-9018-c4595138257d",
+						"type": "text/javascript",
+						"exec": [
+							"let res = pm.response.json()",
+							"",
+							"pm.test('Returns an array of events that is not empty', function() {",
+							"    let isArray = res.length > 0",
+							"    pm.expect(isArray).to.eql(true);",
+							"})",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3001/api/eventsInfo/reactjs-dallas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"eventsInfo",
+						"reactjs-dallas"
+					]
+				},
+				"description": "Should return information about events for an existing group"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Event RSVPS Valid GroupName and ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "99cd68d9-3660-46c4-a89b-c38f9e201a83",
+						"type": "text/javascript",
+						"exec": [
+							"let res = pm.response.json()",
+							"",
+							"pm.test('Returns an array of rsvps that is not empty', function() {",
+							"    let isArray = res.length > 0",
+							"    pm.expect(isArray).to.eql(true);",
+							"})",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3001/api/rsvps/reactjs-dallas/pbbdwnyxmbpb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"rsvps",
+						"reactjs-dallas",
+						"pbbdwnyxmbpb"
+					]
+				},
+				"description": "Can fetch a list of RSVPS given a valid group name and event ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Fails On Invalid Request To Events Endpoint",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5c1f7bd6-37fb-4a32-b571-9a8a183d0a8c",
+						"type": "text/javascript",
+						"exec": [
+							"let res = pm.response.json()",
+							"",
+							"pm.test('Returns a string that server did not get response from API', function() {",
+							"    pm.expect(res).to.eql(\"Could not get response from Meetup API\");",
+							"})",
+							"",
+							"pm.test(\"Status code is 500\", function () {",
+							"    pm.response.to.have.status(500);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3001/api/eventsInfo/clearlynotagroup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"eventsInfo",
+						"clearlynotagroup"
+					]
+				},
+				"description": "If provided with an invalid groupname, the getEventsInfo endpoint fails"
+			},
+			"response": []
+		},
+		{
+			"name": "Fails On Invalid Request to RSVPs Endpoint",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "244a07bc-da36-48af-b983-3b9bbc85a6a5",
+						"type": "text/javascript",
+						"exec": [
+							"let res = pm.response.json()",
+							"",
+							"pm.test('Returns a string that server did not get response from API', function() {",
+							"    pm.expect(res).to.eql(\"Could not get response from Meetup API\");",
+							"})",
+							"",
+							"pm.test(\"Status code is 500\", function () {",
+							"    pm.response.to.have.status(500);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3001/api/rsvps/reactjs-dallas/notarealid",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"rsvps",
+						"reactjs-dallas",
+						"notarealid"
+					]
+				},
+				"description": "If endpoint is not provided with a valid group name or id, the endpoint fails."
+			},
+			"response": []
+		}
+	]
+}
