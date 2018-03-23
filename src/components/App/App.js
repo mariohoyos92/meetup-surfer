@@ -38,10 +38,10 @@ class App extends Component {
           </SelectField>
         );
       case 1:
-        const availableEvents = this.props.eventList.map(event => {
+        const availableEvents = this.props.eventList.map((event, i) => {
           return (
             <MenuItem
-              value={event.id}
+              value={i}
               primaryText={`At ${event.venue.name} on ${event.local_date}`}
               key={event.id}
             />
@@ -52,7 +52,7 @@ class App extends Component {
             autoWidth
             maxHeight={200}
             floatingLabelText="Select an Event"
-            value={this.props.selectedEvent}
+            value={this.props.selectedEventIndex}
             onChange={this.props.selectEvent}
           >
             {availableEvents}
@@ -67,9 +67,14 @@ class App extends Component {
       stepIndex,
       fetchEventList,
       handlePrev,
-      fetchEventInfo
+      fetchEventInfo,
+      eventList,
+      selectedEventIndex,
+      selectedGroup
     } = this.props;
     const contentStyle = { margin: "0 16px", overflow: "hidden" };
+    const selectedEvent =
+      eventList.length > 0 && eventList[selectedEventIndex].id;
 
     return (
       <div style={contentStyle}>
@@ -82,12 +87,12 @@ class App extends Component {
             style={{ marginRight: 12 }}
           />
           <RaisedButton
-            label={stepIndex === 1 ? "Finish" : "Next"}
+            label={stepIndex === 1 ? "Look Up" : "Next"}
             primary={true}
             onClick={
               stepIndex === 0
                 ? () => fetchEventList("reactjs-dallas")
-                : () => fetchEventInfo()
+                : () => fetchEventInfo("reactjs-dallas", selectedEvent)
             }
           />
         </div>
@@ -126,7 +131,9 @@ const mapStateToProps = state => {
     stepIndex: state.stepIndex,
     loadingEventList: state.loadingEventList,
     eventList: state.eventList,
-    selectedGroup: state.selectedGroup
+    selectedGroup: state.selectedGroup,
+    selectedEventIndex: state.selectedEventIndex,
+    eventInfo: state.eventInfo
   };
 };
 

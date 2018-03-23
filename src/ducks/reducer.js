@@ -7,6 +7,7 @@ let initialState = {
   finishedGettingEventInfo: false,
   stepIndex: 0,
   selectedGroup: 0,
+  selectedEventIndex: 0,
   eventList: [],
   eventInfo: {}
 };
@@ -68,16 +69,22 @@ export const fetchEventList = groupName => {
       .catch(console.log)
   };
 };
-export const fetchEventInfo = eventID => {
+export const fetchEventInfo = (selectedGroup, eventId) => {
   return {
     type: FETCH_EVENT_INFO,
     payload: axios
-      .get("/api/eventsInfo/:groupName/:eventId")
+      .get(`/api/rsvps/${selectedGroup}/${eventId}`)
       .then(eventInfo => eventInfo)
       .catch(console.log)
   };
 };
 export const selectGroup = (event, index, value) => {
+  return {
+    type: SELECT_GROUP,
+    payload: value
+  };
+};
+export const selectEvent = (event, index, value) => {
   return {
     type: SELECT_GROUP,
     payload: value
