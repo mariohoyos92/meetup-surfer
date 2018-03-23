@@ -14,8 +14,8 @@ let initialState = {
 
 // Constants
 const HANDLE_PREV = "HANDLE_PREV";
-const HANDLE_NEXT = "HANDLE_NEXT";
 const SELECT_GROUP = "SELECT_GROUP";
+const SELECT_EVENT = "SELECT_EVENT";
 const FETCH_EVENT_LIST = "FETCH_EVENT_LIST";
 const FETCH_EVENT_INFO = "FETCH_EVENT_INFO";
 
@@ -26,6 +26,8 @@ export default function(state = initialState, action) {
       return Object.assign({}, state, { stepIndex: (state.stepIndex -= 1) });
     case SELECT_GROUP:
       return Object.assign({}, state, { selectedGroup: action.payload });
+    case SELECT_EVENT:
+      return Object.assign({}, state, { selectedEventIndex: action.payload });
 
     case FETCH_EVENT_LIST + "_PENDING":
       return Object.assign({}, state, { loadingEventList: true });
@@ -86,7 +88,7 @@ export const selectGroup = (event, index, value) => {
 };
 export const selectEvent = (event, index, value) => {
   return {
-    type: SELECT_GROUP,
+    type: SELECT_EVENT,
     payload: value
   };
 };
