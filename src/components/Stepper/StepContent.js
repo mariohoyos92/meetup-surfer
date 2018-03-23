@@ -10,8 +10,10 @@ import MenuItem from "material-ui/MenuItem";
 
 const StepContent = ({
   stepIndex,
+  selectGroup,
   selectedGroup,
   eventList,
+  selectEvent,
   selectedEventIndex
 }) => {
   switch (stepIndex) {
