@@ -2,6 +2,7 @@ import React from "react";
 
 // Import Redux
 import { connect } from "react-redux";
+import { resetApp } from "../../ducks/reducer";
 
 // Import MaterialUI Components
 import AppBar from "material-ui/AppBar";
@@ -14,13 +15,15 @@ import EventInfo from "../EventInfo/EventInfo";
 // Import CSS
 import "./App.css";
 
-const App = ({ eventInfo }) => (
+const App = ({ eventInfo, resetApp }) => (
   <div>
     <AppBar
       title="Meetup Surfer"
       showMenuIconButton={false}
       iconElementRight={
-        eventInfo.length > 0 && <FlatButton>Start Over</FlatButton>
+        eventInfo.length > 0 && (
+          <FlatButton onClick={resetApp}>Start Over</FlatButton>
+        )
       }
     />
     {eventInfo.length > 0 ? <EventInfo /> : <MeetupStepper />}
@@ -31,4 +34,4 @@ const mapStateToProps = state => {
   return { eventInfo: state.eventInfo };
 };
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, { resetApp })(App);

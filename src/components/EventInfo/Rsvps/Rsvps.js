@@ -16,7 +16,7 @@ const Rsvps = ({ eventInfo }) => {
     <RsvpCard
       key={person.member.id}
       name={person.member.name}
-      role={person.response}
+      response={person.response}
       imageURL={person.member.photo.thumb_link}
     />
   ));

@@ -18,6 +18,7 @@ const SELECT_GROUP = "SELECT_GROUP";
 const SELECT_EVENT = "SELECT_EVENT";
 const FETCH_EVENT_LIST = "FETCH_EVENT_LIST";
 const FETCH_EVENT_INFO = "FETCH_EVENT_INFO";
+const RESET_APP = "RESET_APP";
 
 // Reducer
 export default function(state = initialState, action) {
@@ -52,6 +53,8 @@ export default function(state = initialState, action) {
       console.log(action.payload);
       break;
 
+    case RESET_APP:
+      return Object.assign({}, state, initialState);
     default:
       return state;
   }
@@ -90,5 +93,11 @@ export const selectEvent = (event, index, value) => {
   return {
     type: SELECT_EVENT,
     payload: value
+  };
+};
+
+export const resetApp = () => {
+  return {
+    type: RESET_APP
   };
 };

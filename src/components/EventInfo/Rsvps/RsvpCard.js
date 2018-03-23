@@ -5,10 +5,10 @@ import Card from "material-ui/Card/Card";
 import CardText from "material-ui/Card/CardText";
 import CardHeader from "material-ui/Card/CardHeader";
 
-const RsvpCard = ({ name, rsvp, imageURL }) => {
+const RsvpCard = ({ name, response, imageURL }) => {
   return (
     <Card style={{ margin: "5%" }}>
-      <CardHeader title={name} subtitle={rsvp} avatar={imageURL} />
+      <CardHeader title={name} subtitle={response} avatar={imageURL} />
     </Card>
   );
 };

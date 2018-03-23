@@ -32,15 +32,14 @@ const EventDetails = ({ eventList, selectedEventIndex }) => {
 
         <li>
           <strong>Venue: </strong>
-          {event.venue.name}
-          <br />{" "}
+          {event.venue.name}{" "}
           <a
             href={`http://www.google.com/maps/place/${event.venue.lat},${
               event.venue.lon
             }`}
             target="_blank"
           >
-            Open in Google Maps
+            Google Maps
           </a>
         </li>
         <li>
