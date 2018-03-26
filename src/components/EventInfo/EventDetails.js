@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 // Import Redux
 import { connect } from "react-redux";
@@ -59,3 +60,8 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(EventDetails);
+
+EventDetails.propTypes = {
+  eventList: PropTypes.array,
+  selectedEventIndex: PropTypes.number
+};

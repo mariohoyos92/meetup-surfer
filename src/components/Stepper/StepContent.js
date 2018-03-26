@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 // Import Redux
 import { connect } from "react-redux";
@@ -67,3 +68,12 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, { selectEvent, selectGroup })(
   StepContent
 );
+
+StepContent.propTypes = {
+  stepIndex: PropTypes.number,
+  eventList: PropTypes.array,
+  selectedGroup: PropTypes.string,
+  selectedEventIndex: PropTypes.number,
+  selectEvent: PropTypes.func,
+  selectGroup: PropTypes.func
+};

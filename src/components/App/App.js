@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 // Import Redux
 import { connect } from "react-redux";
@@ -35,3 +36,8 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, { resetApp })(App);
+
+App.propTypes = {
+  eventInfo: PropTypes.array,
+  resetApp: PropTypes.func
+};

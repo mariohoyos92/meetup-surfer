@@ -1,13 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 // Import Redux
 import { connect } from "react-redux";
-import {
-  handlePrev,
-  fetchEventList,
-  selectGroup,
-  fetchEventInfo,
-  selectEvent
-} from "../../ducks/reducer";
 
 // Import Material UI Components
 import { Step, Stepper, StepLabel } from "material-ui/Stepper";
@@ -16,8 +11,9 @@ import CardTitle from "material-ui/Card/CardTitle";
 
 import RenderedContent from "./RenderedContent";
 
-const MeetupStepper = ({ loadingEventList, stepIndex, loadingEventInfo }) => {
+const MeetupStepper = ({ stepIndex }) => {
   const mobile = window.innerWidth < 425;
+
   return (
     <div className="stepper-container flex-center">
       <Card style={{ width: "70%" }}>
@@ -43,20 +39,12 @@ const MeetupStepper = ({ loadingEventList, stepIndex, loadingEventInfo }) => {
 
 const mapStateToProps = state => {
   return {
-    stepIndex: state.stepIndex,
-    loadingEventList: state.loadingEventList,
-    eventList: state.eventList,
-    selectedGroup: state.selectedGroup,
-    selectedEventIndex: state.selectedEventIndex,
-    eventInfo: state.eventInfo,
-    loadingEventInfo: state.loadingEventInfo
+    stepIndex: state.stepIndex
   };
 };
 
-export default connect(mapStateToProps, {
-  handlePrev,
-  fetchEventList,
-  selectGroup,
-  fetchEventInfo,
-  selectEvent
-})(MeetupStepper);
+export default connect(mapStateToProps)(MeetupStepper);
+
+MeetupStepper.propTypes = {
+  stepIndex: PropTypes.number.isRequired
+};

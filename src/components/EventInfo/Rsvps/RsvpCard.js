@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 // Import Material UI Components
 import Card from "material-ui/Card/Card";
@@ -13,3 +14,9 @@ const RsvpCard = ({ name, response, imageURL }) => {
 };
 
 export default RsvpCard;
+
+RsvpCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  response: PropTypes.string,
+  imageURL: PropTypes.string
+};
