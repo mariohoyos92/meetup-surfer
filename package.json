@@ -21,7 +21,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "demo": "node server/index.js | node scripts/demo.js",
+    "demo-windows": "start node server/index.js && start node scripts/demo.js"
   },
   "proxy": "http://localhost:3001",
   "devDependencies": {
