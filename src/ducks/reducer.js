@@ -9,7 +9,7 @@ let initialState = {
   selectedGroup: 0,
   selectedEventIndex: 0,
   eventList: [],
-  eventInfo: {}
+  eventInfo: []
 };
 
 // Constants

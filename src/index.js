@@ -7,13 +7,16 @@ import { Provider } from "react-redux";
 import store from "./ducks/store/store";
 
 import App from "./components/App/App";
+import ErrorBoundary from "./components/Error/ErrorBoundary";
 
 import "./index.css";
 
 ReactDOM.render(
   <Provider store={store}>
     <MuiThemeProvider>
-      <App />
+      <ErrorBoundary>
+        <App />
+      </ErrorBoundary>
     </MuiThemeProvider>
   </Provider>,
   document.getElementById("root")

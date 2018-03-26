@@ -72,7 +72,7 @@ export default connect(mapStateToProps, { selectEvent, selectGroup })(
 StepContent.propTypes = {
   stepIndex: PropTypes.number,
   eventList: PropTypes.array,
-  selectedGroup: PropTypes.string,
+  selectedGroup: PropTypes.number,
   selectedEventIndex: PropTypes.number,
   selectEvent: PropTypes.func,
   selectGroup: PropTypes.func

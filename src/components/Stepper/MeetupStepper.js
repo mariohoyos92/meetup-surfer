@@ -13,7 +13,6 @@ import RenderedContent from "./RenderedContent";
 
 const MeetupStepper = ({ stepIndex }) => {
   const mobile = window.innerWidth < 425;
-
   return (
     <div className="stepper-container flex-center">
       <Card style={{ width: "70%" }}>
