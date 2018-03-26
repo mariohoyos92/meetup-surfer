@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 // Import Redux
 import { connect } from "react-redux";
 import {
@@ -11,37 +11,35 @@ import {
 
 // Import Material UI Components
 import { Step, Stepper, StepLabel } from "material-ui/Stepper";
-import Paper from "material-ui/Paper";
-import TextField from "material-ui/TextField";
-import ExpandTransition from "material-ui/internal/ExpandTransition";
-import SelectField from "material-ui/SelectField";
-import MenuItem from "material-ui/MenuItem";
-import LinearProgress from "material-ui/LinearProgress";
+import Card from "material-ui/Card";
+import CardTitle from "material-ui/Card/CardTitle";
 
 import RenderedContent from "./RenderedContent";
 
-class MeetupStepper extends Component {
-  render() {
-    const { loadingEventList, stepIndex, loadingEventInfo } = this.props;
-    return (
-      <div className="stepper-container flex-center">
-        <Paper style={{ width: "70%" }}>
-          <div style={{ width: "100%", maxWidth: 700, margin: "auto" }}>
-            <Stepper activeStep={stepIndex}>
-              <Step>
-                <StepLabel>Select a Meetup Group</StepLabel>
-              </Step>
-              <Step>
-                <StepLabel>Select an event</StepLabel>
-              </Step>
-            </Stepper>
-            <RenderedContent />
-          </div>
-        </Paper>
-      </div>
-    );
-  }
-}
+const MeetupStepper = ({ loadingEventList, stepIndex, loadingEventInfo }) => {
+  const mobile = window.innerWidth < 425;
+  return (
+    <div className="stepper-container flex-center">
+      <Card style={{ width: "70%" }}>
+        <CardTitle title="Welcome" />
+        <div style={{ width: "100%", maxWidth: 700, margin: "auto" }}>
+          <Stepper
+            activeStep={stepIndex}
+            orientation={mobile ? "vertical" : "horizontal"}
+          >
+            <Step>
+              <StepLabel>Select a Meetup Group</StepLabel>
+            </Step>
+            <Step>
+              <StepLabel>Select an event</StepLabel>
+            </Step>
+          </Stepper>
+          <RenderedContent />
+        </div>
+      </Card>
+    </div>
+  );
+};
 
 const mapStateToProps = state => {
   return {

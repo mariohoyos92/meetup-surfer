@@ -4,7 +4,6 @@ import React from "react";
 import { connect } from "react-redux";
 
 // Import Material UI Components
-import Card from "material-ui/Card/Card";
 import CardTitle from "material-ui/Card/CardTitle";
 
 const EventDetails = ({ eventList, selectedEventIndex }) => {
