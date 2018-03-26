@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+// Import Custom Components
 import FallbackComponent from "./FallbackComponent";
 
 class ErrorBoundary extends Component {

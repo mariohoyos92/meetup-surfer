@@ -1,24 +1,22 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 // Import Redux
 import { connect } from "react-redux";
-import {
-  fetchEventInfo,
-  fetchEventList,
-  handlePrev
-} from "../../ducks/reducer";
+import { fetchRsvps, fetchEventList, handlePrev } from "../../ducks/actions";
 
 // Import MaterialUI Components
 import RaisedButton from "material-ui/RaisedButton";
 import FlatButton from "material-ui/FlatButton";
 
+// Import Custom Components
 import StepContent from "./StepContent";
 
 const RenderedContent = ({
   stepIndex,
   fetchEventList,
   handlePrev,
-  fetchEventInfo,
+  fetchRsvps,
   eventList,
   selectedEventIndex
 }) => {
@@ -44,7 +42,7 @@ const RenderedContent = ({
           onClick={
             stepIndex === 0
               ? () => fetchEventList("reactjs-dallas")
-              : () => fetchEventInfo("reactjs-dallas", selectedEvent)
+              : () => fetchRsvps("reactjs-dallas", selectedEvent)
           }
         />
       </div>
@@ -61,7 +59,16 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, {
-  fetchEventInfo,
+  fetchRsvps,
   fetchEventList,
   handlePrev
 })(RenderedContent);
+
+RenderedContent.propTypes = {
+  stepIndex: PropTypes.number.isRequired,
+  eventList: PropTypes.array,
+  selectedEventIndex: PropTypes.number.isRequired,
+  fetchEventList: PropTypes.func,
+  fetchRsvps: PropTypes.func,
+  handlePrev: PropTypes.func
+};

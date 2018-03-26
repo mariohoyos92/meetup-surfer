@@ -9,6 +9,7 @@ import { Step, Stepper, StepLabel } from "material-ui/Stepper";
 import Card from "material-ui/Card";
 import CardTitle from "material-ui/Card/CardTitle";
 
+// Import Custom Components
 import RenderedContent from "./RenderedContent";
 
 const MeetupStepper = ({ stepIndex }) => {

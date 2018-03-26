@@ -24,12 +24,10 @@ const EventDetails = ({ eventList, selectedEventIndex }) => {
         <li>
           <strong>Event Name: </strong> {event.name}
         </li>
-
         <li>
           <strong>Event Date/Time: </strong>
           {`${event.local_date} at ${localTime}`}
         </li>
-
         <li>
           <strong>Venue: </strong>
           {event.venue.name}{" "}

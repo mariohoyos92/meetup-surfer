@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 // Import Redux
 import { connect } from "react-redux";
-import { selectEvent, selectGroup } from "../../ducks/reducer";
+import { selectEvent, selectGroup } from "../../ducks/actions";
 
 // Import MaterialUI Components
 import SelectField from "material-ui/SelectField";

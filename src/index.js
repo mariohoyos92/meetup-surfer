@@ -6,6 +6,7 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import { Provider } from "react-redux";
 import store from "./ducks/store/store";
 
+// Import Custom Components
 import App from "./components/App/App";
 import ErrorBoundary from "./components/Error/ErrorBoundary";
 

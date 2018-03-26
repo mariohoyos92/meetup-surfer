@@ -1,5 +1,6 @@
 import React from "react";
 
+// Import Custom Components
 import Rsvps from "./Rsvps/Rsvps";
 
 const EventInfo = () => (

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 // Import Redux
 import { connect } from "react-redux";
-import { resetApp } from "../../ducks/reducer";
+import { resetApp } from "../../ducks/actions";
 
 // Import MaterialUI Components
 import AppBar from "material-ui/AppBar";
@@ -13,31 +13,28 @@ import FlatButton from "material-ui/FlatButton";
 import MeetupStepper from "../Stepper/MeetupStepper";
 import EventInfo from "../EventInfo/EventInfo";
 
-// Import CSS
-import "./App.css";
-
-const App = ({ eventInfo, resetApp }) => (
+const App = ({ rsvps, resetApp }) => (
   <div>
     <AppBar
       title="Meetup Surfer"
       showMenuIconButton={false}
       iconElementRight={
-        eventInfo.length > 0 && (
+        rsvps.length > 0 && (
           <FlatButton onClick={resetApp}>Start Over</FlatButton>
         )
       }
     />
-    {eventInfo.length > 0 ? <EventInfo /> : <MeetupStepper />}
+    {rsvps.length > 0 ? <EventInfo /> : <MeetupStepper />}
   </div>
 );
 
 const mapStateToProps = state => {
-  return { eventInfo: state.eventInfo };
+  return { rsvps: state.rsvps };
 };
 
 export default connect(mapStateToProps, { resetApp })(App);
 
 App.propTypes = {
-  eventInfo: PropTypes.array,
+  rsvps: PropTypes.array,
   resetApp: PropTypes.func
 };

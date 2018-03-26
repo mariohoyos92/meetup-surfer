@@ -9,11 +9,12 @@ import Card from "material-ui/Card/Card";
 import CardTitle from "material-ui/Card/CardTitle";
 import Divider from "material-ui/Divider";
 
+// Import Custom Components
 import RsvpCard from "./RsvpCard";
-import EventDetails from "../EventDetails";
+import EventDetails from "./EventDetails";
 
-const Rsvps = ({ eventInfo }) => {
-  const rsvps = eventInfo.map(person => (
+const Rsvps = ({ rsvps }) => {
+  const rsvpsDisplay = rsvps.map(person => (
     <RsvpCard
       key={person.member.id}
       name={person.member.name}
@@ -24,24 +25,21 @@ const Rsvps = ({ eventInfo }) => {
   return (
     <Card>
       <EventDetails />
-      <CardTitle
-        title="Who's Going?"
-        subtitle={`Responses: ${eventInfo.length}`}
-      />
+      <CardTitle title="Who's Going?" subtitle={`Responses: ${rsvps.length}`} />
       <Divider />
-      <div className="profiles-container">{rsvps}</div>
+      <div className="profiles-container">{rsvpsDisplay}</div>
     </Card>
   );
 };
 
 const mapStateToProps = state => {
   return {
-    eventInfo: state.eventInfo
+    rsvps: state.rsvps
   };
 };
 
 export default connect(mapStateToProps)(Rsvps);
 
 Rsvps.propTypes = {
-  eventInfo: PropTypes.array.isRequired
+  rsvps: PropTypes.array.isRequired
 };
