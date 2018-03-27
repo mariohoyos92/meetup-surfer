@@ -2,6 +2,10 @@
 
 Meetup Surfer is a simple web application that you can use to find information about super specific Meetups. Halfway a joke-application, though fully functional.
 
+## [Live Demo](https://meetup-surfer.herokuapp.com/)
+
+Or if you want to run it locally follow the steps below
+
 ## Instructions for use
 
 * Clone this repository
@@ -30,4 +34,4 @@ Meetup Surfer is a simple web application that you can use to find information a
 * Your browser window should open up to localhost:3001 and you should now be
   able to use the app!
 
-### Pull requests, suggestions, and funny song suggestions are welcome.
+### Pull requests and suggestions welcome.

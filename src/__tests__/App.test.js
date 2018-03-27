@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import renderer from "react-test-renderer";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
 import { Provider } from "react-redux";
